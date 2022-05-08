@@ -75,12 +75,12 @@ public class XmlClient {
 
                             // ReferenceInterne
                             Element ReferenceInterne = doc.createElement("ReferenceInterne");
-                            ReferenceInterne.appendChild(doc.createTextNode(unMateriel.getReferenceInterne()));
+                            ReferenceInterne.appendChild(doc.createTextNode(unMateriel.getLeType().getReferenceInterne()));
                             materiel.appendChild(ReferenceInterne);
 
                             // LibelleTypeMateriel
                             Element LibelleTypeMateriel = doc.createElement("LibelleTypeMateriel");
-                            LibelleTypeMateriel.appendChild(doc.createTextNode(unMateriel.getLibelleTypeMateriel()));
+                            LibelleTypeMateriel.appendChild(doc.createTextNode(unMateriel.getLeType().getLibelleTypeMateriel()));
                             materiel.appendChild(LibelleTypeMateriel);
                             
                             // DateDeVente
@@ -90,7 +90,7 @@ public class XmlClient {
                             
                             // Dateinstallation
                             Element Dateinstallation = doc.createElement("Dateinstallation");
-                            Dateinstallation.appendChild(doc.createTextNode(unMateriel.getDateinstallation()));
+                            Dateinstallation.appendChild(doc.createTextNode(unMateriel.getDateinstallation().DateComplete()));
                             materiel.appendChild(Dateinstallation);
                             
                             // Emplacement 

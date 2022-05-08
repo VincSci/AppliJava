@@ -30,7 +30,7 @@ public class Client {
     
     public ArrayList<Materiel> getMaterielsSousContrat(){
         ArrayList<Materiel> lesMateriels = new ArrayList<Materiel>();
-            String requete = "SELECT materiel.NumeroDeSerie, materiel.ReferenceInterne, typemateriel.LibelleTypeMateriel, materiel.DateDeVente, materiel.Dateinstallation, materiel.Emplacement FROM materiel, typemateriel ";
+            String requete = "SELECT materiel.NumeroDeSerie, materiel.ReferenceInterne, typemateriel.LibelleTypeMateriel, materiel.DateDeVente, materiel.Emplacement FROM materiel, typemateriel ";
             RequeteClient ReqMat = new RequeteClient(requete, numClient);
             ReqMat.RequeteMateriel(lesMateriels);
         return lesMateriels;

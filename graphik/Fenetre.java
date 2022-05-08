@@ -19,6 +19,8 @@ import javax.swing.border.EmptyBorder;
 
 import appli.Client;
 import appli.ContratMaintenance;
+import appli.Date;
+import appli.Materiel;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -166,6 +168,25 @@ public class Fenetre extends JFrame {
 							"Confirmation d'enregistrement",
 								JOptionPane.YES_NO_CANCEL_OPTION);
 					if (returnVal == FenMessage.OK_OPTION) {
+						RequeteContrat laRequeteContrat = new RequeteContrat("SELECT NumeroDeContrat, RefTypeContrat FROM contratdemaintenance");
+						ContratMaintenance leContrat = laRequeteContrat.RecupeContrat(comboBoxContrat.getSelectedItem().toString());
+						
+						RequeteDate laRequeteDateSignature = new RequeteDate("SELECT YEAR(DateSignature), MONTH(DateSignature), DAY(DateSignature) FROM contratdemaintenance");
+						Date laDateSignature = laRequeteDateSignature.DateSignature(leContrat.getNumClient(), leContrat.getNumContrat());
+						
+						RequeteDate laRequeteDateEcheance = new RequeteDate("SELECT YEAR(DateEcheance), MONTH(DateEcheance), DAY(DateEcheance) FROM contratdemaintenance");
+						Date laDateEcheance = laRequeteDateEcheance.DateEcheance(leContrat.getNumClient(), leContrat.getNumContrat());
+						
+						leContrat.setDateSignature(laDateSignature);
+						leContrat.setDateEcheance(laDateEcheance);
+						
+						Client leClient = new Client (leContrat.getNumClient());
+						leClient.setLesMateriels(leClient.getMaterielsSousContrat());
+						
+						for(Materiel leMateriel : leClient.getLesMateriels()) {
+							leContrat.ajouteMateriel(leMateriel);
+						}
+						
                         JOptionPane MessageResult = new JOptionPane();
                         MessageResult.showMessageDialog(null, "Le Materiels du Client est désormais couvert", "Enregistrement termine", JOptionPane.INFORMATION_MESSAGE);
 					}

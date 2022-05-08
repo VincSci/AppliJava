@@ -17,7 +17,7 @@ public class ContratMaintenance {
         int nbJour = 0;
             String requete = "SELECT DATEDIFF(DateEcheance, CURRENT_DATE) FROM contratdemaintenance";
             
-            RequeteContrat reqContrat = new RequeteContrat(requete, numContrat);
+            RequeteContrat reqContrat = new RequeteContrat(requete);
             
             nbJour = reqContrat.RequeteJour(NumClient);
         return nbJour;
@@ -39,9 +39,9 @@ public class ContratMaintenance {
     // indique si le contrat est valide (la date du jour est entre la date de signature et la date d’échéance)
     
     public void ajouteMateriel (Materiel unMateriel){
-        if(dateSignature.getJour() <= unMateriel.getDateInstalle().getJour() && dateEcheance.getJour() >= unMateriel.getDateInstalle().getJour()){
-            if(dateSignature.getMois() <= unMateriel.getDateInstalle().getMois() && dateEcheance.getMois() >= unMateriel.getDateInstalle().getMois()){
-                if(dateSignature.getAnnee() <= unMateriel.getDateInstalle().getAnnee() && dateEcheance.getAnnee() >= unMateriel.getDateInstalle().getAnnee()){
+        if(dateSignature.getJour() <= unMateriel.getDateinstallation().getJour() && dateEcheance.getJour() >= unMateriel.getDateinstallation().getJour()){
+            if(dateSignature.getMois() <= unMateriel.getDateinstallation().getMois() && dateEcheance.getMois() >= unMateriel.getDateinstallation().getMois()){
+                if(dateSignature.getAnnee() <= unMateriel.getDateinstallation().getAnnee() && dateEcheance.getAnnee() >= unMateriel.getDateinstallation().getAnnee()){
                             lesMaterielsAssures.add(unMateriel);
                 }
             }
@@ -50,12 +50,9 @@ public class ContratMaintenance {
     // ajoute unMatériel à la collection lesMaterielsAssures si la date de signature du contrat est 
     // antérieure à la date d’installation du matériel
 
-    public ContratMaintenance(String numContrat, Date dateSignature, Date dateEcheance, String numClient,
-			String refTypeContrat) {
+    public ContratMaintenance(String numContrat, String numClient, String refTypeContrat) {
 		super();
 		this.numContrat = numContrat;
-		this.dateSignature = dateSignature;
-		this.dateEcheance = dateEcheance;
 		this.numClient = numClient;
 		this.refTypeContrat = refTypeContrat;
 	}
@@ -79,4 +76,28 @@ public class ContratMaintenance {
     public String getRefTypeContrat() {
         return refTypeContrat;
     }
+
+	public void setNumContrat(String numContrat) {
+		this.numContrat = numContrat;
+	}
+
+	public void setDateSignature(Date dateSignature) {
+		this.dateSignature = dateSignature;
+	}
+
+	public void setDateEcheance(Date dateEcheance) {
+		this.dateEcheance = dateEcheance;
+	}
+
+	public void setNumClient(String numClient) {
+		this.numClient = numClient;
+	}
+
+	public void setRefTypeContrat(String refTypeContrat) {
+		this.refTypeContrat = refTypeContrat;
+	}
+
+	public void setLesMaterielsAssures(ArrayList<Materiel> lesMaterielsAssures) {
+		this.lesMaterielsAssures = lesMaterielsAssures;
+	}
 }

@@ -11,12 +11,6 @@ public Date(int jour, int mois, int annee) {
     this.annee = annee;
 }
 
-public Date(String date) {
-    this.jour = date.charAt(9) + date.charAt(10);
-    this.mois = date.charAt(6) + date.charAt(7);
-    this.annee = date.charAt(1) + date.charAt(2) + date.charAt(3) + date.charAt(4);
-}
-
 public int getJour() {
     return jour;
 }
@@ -27,6 +21,18 @@ public int getMois() {
 
 public int getAnnee() {
     return annee;
+}
+
+public void setJour(int jour) {
+	this.jour = jour;
+}
+
+public void setMois(int mois) {
+	this.mois = mois;
+}
+
+public void setAnnee(int annee) {
+	this.annee = annee;
 }
 
 public String DateComplete(){

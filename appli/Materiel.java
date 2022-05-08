@@ -2,23 +2,20 @@ package appli;
 
 public class Materiel {
     private String NumeroDeSerie;
-    private String ReferenceInterne;
-    private String LibelleTypeMateriel;
     private String DateDeVente;
-    private String Dateinstallation;
-    private Date dateInstalle;
+    private Date Dateinstallation;
     private String Emplacement;
+    private TypeMateriel leType;
+    
+    public Materiel(String numeroDeSerie, String dateDeVente, String emplacement, TypeMateriel leType) {
+		super();
+		NumeroDeSerie = numeroDeSerie;
+		DateDeVente = dateDeVente;
+		Emplacement = emplacement;
+		this.leType = leType;
+	}
 
-    public Materiel(String NumeroDeSerie, String ReferenceInterne, String LibelleTypeMateriel, String DateDeVente, String Dateinstallation, String Emplacement) {
-        this.NumeroDeSerie = NumeroDeSerie;
-        this.ReferenceInterne = ReferenceInterne;
-        this.LibelleTypeMateriel = LibelleTypeMateriel;
-        this.DateDeVente = DateDeVente;
-        this.Dateinstallation = Dateinstallation;
-        this.Emplacement = Emplacement;
-    }
-
-    public String getNumeroDeSerie() {
+	public String getNumeroDeSerie() {
         return NumeroDeSerie;
     }
 
@@ -26,23 +23,15 @@ public class Materiel {
         this.NumeroDeSerie = NumeroDeSerie;
     }
 
-    public String getReferenceInterne() {
-        return ReferenceInterne;
-    }
+    public TypeMateriel getLeType() {
+		return leType;
+	}
 
-    public void setReferenceInterne(String ReferenceInterne) {
-        this.ReferenceInterne = ReferenceInterne;
-    }
+	public void setLeType(TypeMateriel leType) {
+		this.leType = leType;
+	}
 
-    public String getLibelleTypeMateriel() {
-        return LibelleTypeMateriel;
-    }
-
-    public void setLibelleTypeMateriel(String LibelleTypeMateriel) {
-        this.LibelleTypeMateriel = LibelleTypeMateriel;
-    }
-
-    public String getDateDeVente() {
+	public String getDateDeVente() {
         return DateDeVente;
     }
 
@@ -50,11 +39,11 @@ public class Materiel {
         this.DateDeVente = DateDeVente;
     }
 
-    public String getDateinstallation() {
+    public Date getDateinstallation() {
         return Dateinstallation;
     }
 
-    public void setDateinstallation(String Dateinstallation) {
+    public void setDateinstallation(Date Dateinstallation) {
         this.Dateinstallation = Dateinstallation;
     }
 
@@ -65,10 +54,5 @@ public class Materiel {
     public void setEmplacement(String Emplacement) {
         this.Emplacement = Emplacement;
     }
-
-    public Date getDateInstalle() {
-        return dateInstalle;
-    }
-    
 }
 
